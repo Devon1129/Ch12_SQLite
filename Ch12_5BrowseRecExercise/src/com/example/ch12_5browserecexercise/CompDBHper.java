@@ -91,11 +91,13 @@ public class CompDBHper extends SQLiteOpenHelper {
 		String sql = "SELECT * FROM " + TABLE_NAME;
 		Cursor cursor = db.rawQuery(sql, null);
 		if(cursor.getCount() != 0){
-			String whereClause = "cusNo= " + CusNo + "";
+			String whereClause = "cusNo= '" + CusNo + "'";
 			int rowsAffected = db.delete(TABLE_NAME, whereClause, null);
+			cursor.close();
 			db.close();
 			return rowsAffected;
 		}else{
+			cursor.close();
 			db.close();
 			return -1;
 		}
