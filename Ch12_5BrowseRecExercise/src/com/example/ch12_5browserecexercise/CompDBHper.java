@@ -46,17 +46,17 @@ public class CompDBHper extends SQLiteOpenHelper {
 		rec[0].put("cusNo", "A1001");
 		rec[0].put("cusNa", "Lin");
 		rec[0].put("cusPho", "873-1234");
-		rec[0].put("cusAdd", "®ç¶é¿¤¥­¦w§ø49¸¹");
+		rec[0].put("cusAdd", "æ¡ƒåœ’ç¸£å¹³å®‰æ‘49è™Ÿ");
 		
 		rec[1].put("cusNo", "A1002");
 		rec[1].put("cusNa", "Wu");
 		rec[1].put("cusPho", "822-3129");
-		rec[1].put("cusAdd", "¥_¥«©µ¥­«n¸ô20¸¹");
+		rec[1].put("cusAdd", "åŒ—å¸‚å»¶å¹³å—è·¯20è™Ÿ");
 		
 		rec[2].put("cusNo", "A1003");
 		rec[2].put("cusNa", "chung");
 		rec[2].put("cusPho", "704-1134");
-		rec[2].put("cusAdd", "¥_¥«°·±d¸ô15¸¹");
+		rec[2].put("cusAdd", "åŒ—å¸‚å¥åº·è·¯15è™Ÿ");
 		
 		for(ContentValues row : rec){
 			if(db.insert(TABLE_NAME, null, row) < 0)

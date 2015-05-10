@@ -114,17 +114,17 @@ public class MainActivity extends Activity {
 			try{
 			int rowsAffected = dbHper.deleteRec(CusNo);
 			if(rowsAffected == -1){
-				msg = "°õ¦æ SQL ¿ù»~!";
+				msg = "åŸ·è¡Œ SQL éŒ¯èª¤!";
 			}else if(rowsAffected == 0){
-				//¸ê®Æªí¬°ªÅ ©Î ¨S¦³²Å¦X±ø¥óªº¸ê®Æ(¦¹¬°KEY(CusNo)¤£²Å)¤£²Å¡C 
-				msg = "§ä¤£¨ì±ı§R°£ªº¬ö¿ı¡AµLªk§R°£!";
+				//è³‡æ–™è¡¨ç‚ºç©º æˆ– æ²’æœ‰ç¬¦åˆæ¢ä»¶çš„è³‡æ–™(æ­¤ç‚ºKEY(CusNo)ä¸ç¬¦)ä¸ç¬¦ã€‚ 
+				msg = "æ‰¾ä¸åˆ°æ¬²åˆªé™¤çš„ç´€éŒ„ï¼Œç„¡æ³•åˆªé™¤!";
 			}else{
-				msg = "­ì¥»ªº²Ä" + (mIndex + 1) + "µ§¬ö¿ı ¤w§R°£!\n" + 
-						"¦@" + rowsAffected + "µ§°O¿ı ³Q§R°£!";
+				msg = "åŸæœ¬çš„ç¬¬" + (mIndex + 1) + "ç­†ç´€éŒ„ å·²åˆªé™¤!\n" + 
+						"å…±" + rowsAffected + "ç­†è¨˜éŒ„ è¢«åˆªé™¤!";
 				recSet = dbHper.getRecSet();
-				//ª`·NmIndex»P showRec()ªº¦P¨B¡C
-				//¨Ò:«ö¤UButton btnPrev ©Î btnNext Åã¥Üªºµe­±¡A¥²»İ¬O¨Ì§Ç´`Àô¡C
-				//Åã¥Ü²Ä¤@µ§¸ê®Æ
+				//æ³¨æ„mIndexèˆ‡ showRec()çš„åŒæ­¥ã€‚
+				//ä¾‹:æŒ‰ä¸‹Button btnPrev æˆ– btnNext é¡¯ç¤ºçš„ç•«é¢ï¼Œå¿…éœ€æ˜¯ä¾åºå¾ªç’°ã€‚
+				//é¡¯ç¤ºç¬¬ä¸€ç­†è³‡æ–™
 				mIndex = 0;
 				showRec(mIndex);
 				Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
@@ -138,8 +138,8 @@ public class MainActivity extends Activity {
 	
 	private void showRec(int index){
 		if(recSet.size() != 0){
-			String stHead = "Åã¥Ü«È¤á¸ê®Æ:²Ä" + (index + 1) + 
-				"µ§/¦@" + recSet.size() + "µ§";
+			String stHead = "é¡¯ç¤ºå®¢æˆ¶è³‡æ–™:ç¬¬" + (index + 1) + 
+				"ç­†/å…±" + recSet.size() + "ç­†";
 			tvTitle.setTextColor(Color.RED);
 			tvTitle.setText(stHead);
 			Toast.makeText(MainActivity.this, 
