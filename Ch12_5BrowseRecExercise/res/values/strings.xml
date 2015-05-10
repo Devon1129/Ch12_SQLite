@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ch12_5BrowseRecExercise</string>
+    <string name="Title">顯示客戶資料:</string>
+    <string name="tvNo">客戶鰾號:</string>
+    <string name="tvNa">客戶姓名:</string>
+    <string name="tvPho">客戶電話:</string>
+    <string name="tvAdd">客戶地址:</string>
+    <string name="btnPrev">上一筆</string>
+    <string name="btnNext">下一筆</string>
+    <string name="btnDel">刪除</string>
+    
+</resources>
