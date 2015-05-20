@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SQLiteTest3</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="Title">點選MENU可新增、修改、刪除</string>
+	<string name="AddButton">新增</string>
+	<string name="EditButton">修改</string>
+	<string name="DeleteButton">刪除</string>
+</resources>
