@@ -3,7 +3,6 @@ package com.example.ch12_5browserecexercise;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -112,23 +111,23 @@ public class MainActivity extends Activity {
 			String CusNo = etCusNo.getText().toString().trim();
 			String msg;
 			try{
-			int rowsAffected = dbHper.deleteRec(CusNo);
-			if(rowsAffected == -1){
-				msg = "執行 SQL 錯誤!";
-			}else if(rowsAffected == 0){
-				//資料表為空 或 沒有符合條件的資料(此為KEY(CusNo)不符)不符。 
-				msg = "找不到欲刪除的紀錄，無法刪除!";
-			}else{
-				msg = "原本的第" + (mIndex + 1) + "筆紀錄 已刪除!\n" + 
-						"共" + rowsAffected + "筆記錄 被刪除!";
-				recSet = dbHper.getRecSet();
-				//注意mIndex與 showRec()的同步。
-				//例:按下Button btnPrev 或 btnNext 顯示的畫面，必需是依序循環。
-				//顯示第一筆資料
-				mIndex = 0;
-				showRec(mIndex);
-				Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
-			}
+				int rowsAffected = dbHper.deleteRec(CusNo);
+				if(rowsAffected == -1){
+					msg = "執行 SQL 錯誤!";
+				}else if(rowsAffected == 0){
+					//資料表為空 或 沒有符合條件的資料(此為KEY(CusNo)不符)不符。 
+					msg = "找不到欲刪除的紀錄，無法刪除!";
+				}else{
+					msg = "原本的第" + (mIndex + 1) + "筆紀錄 已刪除!\n" + 
+							"共" + rowsAffected + "筆記錄 被刪除!";
+					recSet = dbHper.getRecSet();
+					//注意mIndex與 showRec()的同步。
+					//例:按下Button btnPrev 或 btnNext 顯示的畫面，必需是依序循環。
+					//顯示第一筆資料
+					mIndex = 0;
+					showRec(mIndex);
+					Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+				}
 			}catch(Exception e){
 				Log.w("Warn", e.toString());
 				

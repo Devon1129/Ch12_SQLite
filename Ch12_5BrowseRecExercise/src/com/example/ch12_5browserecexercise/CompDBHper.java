@@ -102,5 +102,4 @@ public class CompDBHper extends SQLiteOpenHelper {
 			return -1;
 		}
 	}
-	
 }
