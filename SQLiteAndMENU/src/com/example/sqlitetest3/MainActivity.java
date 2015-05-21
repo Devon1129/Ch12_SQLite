@@ -1,4 +1,8 @@
 package com.example.sqlitetest3;
+//package com.example.sqliteandmenu;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import android.app.Activity;
 import android.database.Cursor;
@@ -8,14 +12,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	private ListView myListView;
 	private EditText myEditText;
+	private TextView myDate;
 	MySQLiteOpenHelper myHelper;
 	private Cursor myCursor;
 	private int _ID;
@@ -58,6 +64,7 @@ public class MainActivity extends Activity {
 		//建立連結
 		myListView = (ListView)findViewById(R.id.listView1);
 		myEditText = (EditText)findViewById(R.id.editText1);
+		myDate = (TextView)findViewById(R.id.tvDate);
 		
 		myHelper = new MySQLiteOpenHelper(this);
 		
@@ -67,8 +74,8 @@ public class MainActivity extends Activity {
 				this, 
 				R.layout.list, 
 				myCursor, 
-				new String[] {myHelper.Field_Text}, 
-				new int[] {R.id.listTextView1});
+				new String[] {myHelper.Field_Text, myHelper.Field_Date}, 
+				new int[] {R.id.listTextView1, R.id.tvDate});
 		
 		myListView.setAdapter(adapter);
 
@@ -107,14 +114,29 @@ public class MainActivity extends Activity {
 				
 			}
 		});
+		
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+//		//Date nowDate = new Date();
+//		String now = sdf.format(new Date());
+//		Toast.makeText(this, "onCreate(): " + now, Toast.LENGTH_SHORT).show();
+//		//myEditText.setText(now);
 	}
 
+	
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	//Date nowDate = new Date();
+	Date current = new Date();
+	String now = sdf.format(current);
+//	Toast.makeText(this, "onCreate(): " + now, Toast.LENGTH_SHORT).show();
+	
+	//myEditText.setText(now)
 	private void addTodo() {
 		if(myEditText.getText().toString().equals("")){
 			return;
 		}else{
 			//呼叫 SQLite的 insert()方法，將輸入欄位內的資料插入資料庫中.
-			myHelper.insert(myEditText.getText().toString());
+			myHelper.insert(myEditText.getText().toString(), now);
+//			myDate.getText().toString()
 			
 			//重新查詢資料庫的內容.
 			myCursor.requery();
@@ -124,6 +146,8 @@ public class MainActivity extends Activity {
 			myListView.invalidateViews();
 			myEditText.setText("");
 			_ID = 0;
+			
+			Toast.makeText(this, "addTime: " + now, Toast.LENGTH_SHORT).show();
 		}
 	}
 	
@@ -132,7 +156,7 @@ public class MainActivity extends Activity {
 		if(myEditText.getText().toString().equals("")){
 			return;
 		}else{
-			myHelper.update(_ID, myEditText.getText().toString());
+			myHelper.update(_ID, myEditText.getText().toString(), now);
 			
 			//重新查詢資料庫的內容
 			myCursor.requery();
@@ -140,6 +164,8 @@ public class MainActivity extends Activity {
 			myListView.invalidateViews();
 			myEditText.setText("");
 			_ID = 0;
+			
+			Toast.makeText(this, "editTime: " + now, Toast.LENGTH_SHORT).show();
 		}
 	}
 
@@ -156,6 +182,9 @@ public class MainActivity extends Activity {
 			myListView.invalidateViews();
 			myEditText.setText("");
 			_ID = 0;
+			
+			
+			Toast.makeText(this, "deleteTime: " + now, Toast.LENGTH_SHORT).show();
 		}
 	}
 }//end class MainActivity.

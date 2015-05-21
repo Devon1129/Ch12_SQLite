@@ -12,6 +12,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 	private static final String Table_Name = "todo_Table";
 	protected static final String Field_Id = "_id";
 	protected static final String Field_Text = "todo_text";
+	protected static final String Field_Date = "todo_date";
 	
 	public MySQLiteOpenHelper(Context context, String name,
 			CursorFactory factory, int version) {
@@ -20,7 +21,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 	}
 
 	public MySQLiteOpenHelper(Context context){
-		super(context, DB_Name, null, 1);
+		super(context, DB_Name, null, 2);
 	}
 	
 	@Override
@@ -28,7 +29,8 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 		String sql = "CREATE TABLE " + Table_Name + 
 				" ( " + 
 				Field_Id + " INTEGER primary key autoincrement, " + 
-				Field_Text + " text);";
+				Field_Text + " text, " + 
+				Field_Date + " text);";
 		db.execSQL(sql);
 	}
 
@@ -46,11 +48,12 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 		return cursor;
 	}
 	
-	public long insert(String text){
+	public long insert(String text, String date){
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues cv = new ContentValues();
 		//要放在資料庫的哪一個欄位，內容.
 		cv.put(Field_Text, text);
+		cv.put(Field_Date, date);
 		long row = db.insert(Table_Name, null, cv); 
 		return row;
 	}
@@ -62,13 +65,14 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 		db.delete(Table_Name, where, whereValue);
 	}
 	
-	public void update(int id, String text){
+	public void update(int id, String text, String date){
 		SQLiteDatabase db = this.getWritableDatabase();
 		String where = Field_Id + "=?";
 		String[] whereVale = {Integer.toString(id)};
 		
 		ContentValues cv = new ContentValues();
 		cv.put(Field_Text, text);
+		cv.put(Field_Date, date);
 		db.update(Table_Name, cv, where, whereVale);
 	}
 }//end class MySQLitenOpenHelper. 
