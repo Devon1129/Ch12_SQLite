@@ -28,11 +28,12 @@ public class MainActivity extends Activity {
 	protected static final int MENU_ADD = Menu.FIRST;
 	protected static final int MENU_EDIT = Menu.FIRST + 1;
 	protected static final int MENU_DELETE = Menu.FIRST + 2;
+	protected SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		//(¸s²Õ¡AÃÑ§O½X¡A«ö¶s¥X²{ªº¶¶§Ç¡AÅã¥Üªº¤å¦r)
+		//(ç¾¤çµ„ï¼Œè­˜åˆ¥ç¢¼ï¼ŒæŒ‰éˆ•å‡ºç¾çš„é †åºï¼Œé¡¯ç¤ºçš„æ–‡å­—)
 		menu.add(0, MENU_ADD, 0, R.string.AddButton);
 		menu.add(0, MENU_EDIT, 1, R.string.EditButton);
 		menu.add(0, MENU_DELETE, 2, R.string.DeleteButton);
@@ -61,7 +62,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		//«Ø¥ß³sµ²
+		//å»ºç«‹é€£çµ
 		myListView = (ListView)findViewById(R.id.listView1);
 		myEditText = (EditText)findViewById(R.id.editText1);
 		myDate = (TextView)findViewById(R.id.tvDate);
@@ -79,32 +80,32 @@ public class MainActivity extends Activity {
 		
 		myListView.setAdapter(adapter);
 
-		//ºÊÅ¥ListView¬O§_¦³³QÂIÀ»
+		//ç›£è½ListViewæ˜¯å¦æœ‰è¢«é»æ“Š
 		myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				//cursor²¾°Ê¨ì³QÂIÀ»ªº¦ì¸m¤W
+				//cursorç§»å‹•åˆ°è¢«é»æ“Šçš„ä½ç½®ä¸Š
 				myCursor.moveToPosition(arg2);
-				//cursor§ì¨ú²Ä0­ÓÄæ¦ìµ¹ _ID.
+				//cursoræŠ“å–ç¬¬0å€‹æ¬„ä½çµ¦ _ID.
 				_ID = myCursor.getInt(0);
-				//cursor§ì¨ú²Ä1­ÓÄæ¦ìµ¹EditText.
+				//cursoræŠ“å–ç¬¬1å€‹æ¬„ä½çµ¦EditText.
 				myEditText.setText(myCursor.getString(1));				
 			}
 		});
 			
-		//ºÊÅ¥ ListView¬O§_¦³³Q¿ï¨ú.
+		//ç›£è½ ListViewæ˜¯å¦æœ‰è¢«é¸å–.
 		myListView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
 
 			@Override
 			public void onItemSelected(AdapterView<?> arg0, View arg1,
 					int arg2, long arg3) {
-				//Àò±o¤@­Ó SQLiteCursorÃş§Oªºª«¥ó¡A«ü¦V SQLite¸ê®Æ®w¬d¸ßªºµ²ªG.
+				//ç²å¾—ä¸€å€‹ SQLiteCursoré¡åˆ¥çš„ç‰©ä»¶ï¼ŒæŒ‡å‘ SQLiteè³‡æ–™åº«æŸ¥è©¢çš„çµæœ.
 				SQLiteCursor sc = (SQLiteCursor) arg0.getSelectedItem();
-				//¨ú±o¸Óµ§¸ê®Æªº²Ä0­ÓÄæ¦ì¤º®e¡A¸ê®Æ«¬ºA¬°¾ã¼Æ.
+				//å–å¾—è©²ç­†è³‡æ–™çš„ç¬¬0å€‹æ¬„ä½å…§å®¹ï¼Œè³‡æ–™å‹æ…‹ç‚ºæ•´æ•¸.
 				_ID = sc.getInt(0);
-				//¨ú±o¸Óµ§¸ê®Æªº²Ä1­ÓÄæ¦ì¤º®e¡A¸ê®Æ«¬ºA¬°¦r¦ê¡A±N¸ê®Æ¶ñ¤J myEditText¤¤.
+				//å–å¾—è©²ç­†è³‡æ–™çš„ç¬¬1å€‹æ¬„ä½å…§å®¹ï¼Œè³‡æ–™å‹æ…‹ç‚ºå­—ä¸²ï¼Œå°‡è³‡æ–™å¡«å…¥ myEditTextä¸­.
 				myEditText.setText(sc.getString(1));
 			}
 
@@ -114,35 +115,24 @@ public class MainActivity extends Activity {
 				
 			}
 		});
-		
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-//		//Date nowDate = new Date();
-//		String now = sdf.format(new Date());
-//		Toast.makeText(this, "onCreate(): " + now, Toast.LENGTH_SHORT).show();
-//		//myEditText.setText(now);
 	}
-
-	
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-	//Date nowDate = new Date();
-	Date current = new Date();
-	String now = sdf.format(current);
-//	Toast.makeText(this, "onCreate(): " + now, Toast.LENGTH_SHORT).show();
 	
 	//myEditText.setText(now)
 	private void addTodo() {
 		if(myEditText.getText().toString().equals("")){
 			return;
 		}else{
-			//©I¥s SQLiteªº insert()¤èªk¡A±N¿é¤JÄæ¦ì¤ºªº¸ê®Æ´¡¤J¸ê®Æ®w¤¤.
+			Date current = new Date();
+			String now = sdf.format(current);
+			//å‘¼å« SQLiteçš„ insert()æ–¹æ³•ï¼Œå°‡è¼¸å…¥æ¬„ä½å…§çš„è³‡æ–™æ’å…¥è³‡æ–™åº«ä¸­.
 			myHelper.insert(myEditText.getText().toString(), now);
 //			myDate.getText().toString()
 			
-			//­«·s¬d¸ß¸ê®Æ®wªº¤º®e.
+			//é‡æ–°æŸ¥è©¢è³‡æ–™åº«çš„å…§å®¹.
 			myCursor.requery();
-			//­«·sÅã¥Ü ListViewªº¤º®e +²M°£¿é¤JÄæ¦ìªº¸ê®Æ+ _IDÂk0.
-			//invalidateViews:ÅıView¥¢®Ä¡C
-			//·|¾É­Pandroid­«µeµe­±(­«·sÅã¥Ü ListViewªº¤º®e)¡C
+			//é‡æ–°é¡¯ç¤º ListViewçš„å…§å®¹ +æ¸…é™¤è¼¸å…¥æ¬„ä½çš„è³‡æ–™+ _IDæ­¸0.
+			//invalidateViews:è®“Viewå¤±æ•ˆã€‚
+			//æœƒå°è‡´androidé‡ç•«ç•«é¢(é‡æ–°é¡¯ç¤º ListViewçš„å…§å®¹)ã€‚
 			myListView.invalidateViews();
 			myEditText.setText("");
 			_ID = 0;
@@ -156,11 +146,13 @@ public class MainActivity extends Activity {
 		if(myEditText.getText().toString().equals("")){
 			return;
 		}else{
+			Date current = new Date();
+			String now = sdf.format(current);
 			myHelper.update(_ID, myEditText.getText().toString(), now);
 			
-			//­«·s¬d¸ß¸ê®Æ®wªº¤º®e
+			//é‡æ–°æŸ¥è©¢è³‡æ–™åº«çš„å…§å®¹
 			myCursor.requery();
-			//­«·sÅã¥Ü ListViewªº¤º®e + ²M°£¿é¤JÄæ¦ìªº¸ê®Æ+ _IDÂk0.
+			//é‡æ–°é¡¯ç¤º ListViewçš„å…§å®¹ + æ¸…é™¤è¼¸å…¥æ¬„ä½çš„è³‡æ–™+ _IDæ­¸0.
 			myListView.invalidateViews();
 			myEditText.setText("");
 			_ID = 0;
@@ -173,12 +165,14 @@ public class MainActivity extends Activity {
 		if(_ID == 0){
 			return;
 		}else{
-			//©I¥s SQLiteªºdelete()¤èªk.
+			Date current = new Date();
+			String now = sdf.format(current);
+			//å‘¼å« SQLiteçš„delete()æ–¹æ³•.
 			myHelper.delete(_ID);
 			
-			//­«·s¬d¸ß¸ê®Æ®wªº¤º®e.
+			//é‡æ–°æŸ¥è©¢è³‡æ–™åº«çš„å…§å®¹.
 			myCursor.requery();
-			//­«·sÅã¥Ü ListViewªº¤º®e+ ²M°£¿é¤JÄæ¦ìªº¸ê®Æ+ _IDÂk0.
+			//é‡æ–°é¡¯ç¤º ListViewçš„å…§å®¹+ æ¸…é™¤è¼¸å…¥æ¬„ä½çš„è³‡æ–™+ _IDæ­¸0.
 			myListView.invalidateViews();
 			myEditText.setText("");
 			_ID = 0;
