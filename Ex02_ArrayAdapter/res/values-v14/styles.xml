@@ -1,0 +1,17 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme for API 14+. This theme completely replaces
+        AppBaseTheme from BOTH res/values/styles.xml and
+        res/values-v11/styles.xml on API 14+ devices.
+    -->
+    <!-- Spinner 是白色葥頭, action bar不顯示 -->
+    <!-- 
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">        
+    </style>
+ 	-->
+ 	<!-- Spinner 會有右下角的葥頭, action bar會顯示. --> 
+ 	<style name="AppBaseTheme" parent="android:Theme.Holo.Light">        
+    </style>
+          
+</resources>
