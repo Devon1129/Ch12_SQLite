@@ -170,7 +170,7 @@ public class MainActivity extends Activity {
 			//呼叫 SQLite的delete()方法.
 			myHelper.delete(_ID);
 			
-			//重新查詢資料庫的內容.
+			//依原本的查詢條件，重新查詢資料庫的內容.
 			myCursor.requery();
 			//重新顯示 ListView的內容+ 清除輸入欄位的資料+ _ID歸0.
 			myListView.invalidateViews();

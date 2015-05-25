@@ -44,7 +44,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 	
 	public Cursor select(){
 		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.query(Table_Name, null, null, null, null, null, null);
+		Cursor cursor = db.query(Table_Name, null, null, null, null, null, "todo_date desc");
 		return cursor;
 	}
 	
