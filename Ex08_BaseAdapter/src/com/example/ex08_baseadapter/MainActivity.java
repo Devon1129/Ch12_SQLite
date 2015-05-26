@@ -57,6 +57,8 @@ public class MainActivity extends ListActivity {
 		return list;
 	}
 
+	//此處不會被 call，因為 View的 focus在 Button。
+	//在一個 Item裡，同時與 Button存在一起 focus會在 Button上。
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		Log.v("MyListView-cilck!!!", (String)mData.get(position).get("title"));
@@ -94,7 +96,9 @@ public class MainActivity extends ListActivity {
 		@Override
 		public int getCount() {
 			// TODO Auto-generated method stub
-			return mData.size();
+//			return mData.size();
+			Log.d("my Adapter", "getCount()");
+			return 1;
 		}
 
 		@Override
@@ -111,6 +115,8 @@ public class MainActivity extends ListActivity {
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
+			Log.d("my Adapter", "getView()");
+			
 			ViewHolder holder = null;
 			if(convertView == null){
 				holder = new ViewHolder();
