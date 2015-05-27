@@ -64,9 +64,9 @@ public class MainActivity extends Activity {
 			if(CusNo.length() != 0){
 				String rec = dbHper.FindRec(CusNo);
 				if(rec != null){
-					result = " §ä¨ìªº«È¤á¸ê®Æ¬°:\n" + rec;
+					result = " æ‰¾åˆ°çš„å®¢æˆ¶è³‡æ–™ç‚º:\n" + rec;
 				}else{
-					result = "§ä¤£¨ì«ü©wªº«È¤á½s¸¹:" + CusNo;
+					result = "æ‰¾ä¸åˆ°æŒ‡å®šçš„å®¢æˆ¶ç·¨è™Ÿ:" + CusNo;
 				}
 				Toast.makeText(MainActivity.this, result , Toast.LENGTH_SHORT).show();
 			}
