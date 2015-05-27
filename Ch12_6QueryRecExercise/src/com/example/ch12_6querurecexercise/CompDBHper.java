@@ -63,13 +63,13 @@ public class CompDBHper extends SQLiteOpenHelper {
 
 	public String FindRec(String CusNo){
 		SQLiteDatabase db = getReadableDatabase();
-		//ª`·Nselect»y¥y ³s±µ®É¹w¯dªºªÅ¥Õ¡C
+		//æ³¨æ„selectèªå¥ é€£æ¥æ™‚é ç•™çš„ç©ºç™½ã€‚
 		String sql = " SELECT * FROM " + TABLE_NAME + 
 				" where CusNo like ?";
-		//%:¤£ºŞ«e«áªº¤å¦r¬O¤°»ò¡A¥u­n¦³CusNo¥X²{¡A´N·|¬d¸ß¨ì(Ãş¦ü*²Å¸¹)¡C
+		//%:ä¸ç®¡å‰å¾Œçš„æ–‡å­—æ˜¯ä»€éº¼ï¼Œåªè¦æœ‰CusNoå‡ºç¾ï¼Œå°±æœƒæŸ¥è©¢åˆ°(é¡ä¼¼*ç¬¦è™Ÿ)ã€‚
 		String[] args = {"%" + CusNo + "%"};
 		//rawQuery(String sql, String[] selectionArgs)
-		//sql:selest»y¥y;selectionArgs:select»y¥y¤¤¥e¦ì²Å°Ñ¼Æªº­È¡C
+		//sql:selestèªå¥;selectionArgs:selectèªå¥ä¸­å ä½ç¬¦åƒæ•¸çš„å€¼ã€‚
 		Cursor recSet = db.rawQuery(sql, args);
 		int columnCount = recSet.getColumnCount();
 		String fldSet = null;
@@ -77,7 +77,7 @@ public class CompDBHper extends SQLiteOpenHelper {
 			while(recSet.moveToNext()){
 				fldSet = "";
 				for(int i = 0; i < columnCount; i++){
-					//CusrorÀò¨úªºi¦ì¸m¡A¦^¶Ç¬° String type.
+					//Cusrorç²å–çš„iä½ç½®ï¼Œå›å‚³ç‚º String type.
 					fldSet += recSet.getString(i) + "\n";
 				}
 			}
