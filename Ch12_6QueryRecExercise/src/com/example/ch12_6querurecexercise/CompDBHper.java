@@ -63,8 +63,13 @@ public class CompDBHper extends SQLiteOpenHelper {
 
 	public String FindRec(String CusNo){
 		SQLiteDatabase db = getReadableDatabase();
-		String sql = " SELECT * FROM " + TABLE_NAME;
-		String[] args = {"%" + "%"};
+		//猔種select粂 硈钡箇痙フ
+		String sql = " SELECT * FROM " + TABLE_NAME + 
+				" where CusNo like ?";
+		//%:ぃ恨玡ゅ琌ぐ或璶ΤCusNo瞷碞穦琩高(摸*才腹)
+		String[] args = {"%" + CusNo + "%"};
+		//rawQuery(String sql, String[] selectionArgs)
+		//sql:selest粂;selectionArgs:select粂い才把计
 		Cursor recSet = db.rawQuery(sql, args);
 		int columnCount = recSet.getColumnCount();
 		String fldSet = null;
@@ -72,6 +77,7 @@ public class CompDBHper extends SQLiteOpenHelper {
 			while(recSet.moveToNext()){
 				fldSet = "";
 				for(int i = 0; i < columnCount; i++){
+					//Cusror莉i竚肚 String type.
 					fldSet += recSet.getString(i) + "\n";
 				}
 			}
