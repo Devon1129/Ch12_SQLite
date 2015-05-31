@@ -50,9 +50,9 @@ public class TodoDbAdapter {
 	public boolean deleteTodo(long rowId){
 		String msg = "";
 		if(rowId == 0){
-			msg = "§ä¤£¨ì¸ê®Æ";
+			msg = "æ‰¾ä¸åˆ°è³‡æ–™";
 		}else{
-			msg = "§R°£ ¸ê®Æ " + rowId;
+			msg = "åˆªé™¤ è³‡æ–™ " + rowId;
 		}
 //		Toast.makeText(TodoDbAdapter.this, msg, Toast.LENGTH_SHORT);
 		return database.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null) > 0;
@@ -82,9 +82,9 @@ public class TodoDbAdapter {
 	private ContentValues createContentValues(String category, String summary,
 			String description) {
 		ContentValues values = new ContentValues();
-		// [***] ÅÜ¼Æ¸ò¦r¦ê­È¦³°Ï§O. 
-		//       KEY_CATEGORY <= ÅÜ¼Æ
-		//       "KEY_CATEGORY" <= ¦r¦ê­È, ¥¦ªºtype¬OString, ¥ÎÂù¤Þ¸¹¬A°_¨Ó.
+		// [***] è®Šæ•¸è·Ÿå­—ä¸²å€¼æœ‰å€åˆ¥. 
+		//       KEY_CATEGORY <= è®Šæ•¸
+		//       "KEY_CATEGORY" <= å­—ä¸²å€¼, å®ƒçš„typeæ˜¯String, ç”¨é›™å¼•è™Ÿæ‹¬èµ·ä¾†.
 		// values.put("KEY_CATEGORY", "category");
 		values.put(KEY_CATEGORY, category);
 		values.put(KEY_SUMMARY, summary);

@@ -31,9 +31,9 @@ public class TodoOverview extends ListActivity{
 		dbHelper = new TodoDbAdapter(this);
 		dbHelper.open();
 		fillData();
-		// [***]µù¥U ContextMenu¨ì ListActivity¸Ì.
-		//      ÅıListActivity ªºListView»P MENU°µ³s±µ¡A´N·|¥X²{ªø«ö Menu.
-		//      ©Ò«öªºMENU·|®µ±a³Q¿ï¤¤ªºitem's ID»Pposition.
+		// [***]è¨»å†Š ContextMenuåˆ° ListActivityè£¡.
+		//      è®“ListActivity çš„ListViewèˆ‡ MENUåšé€£æ¥ï¼Œå°±æœƒå‡ºç¾é•·æŒ‰ Menu.
+		//      æ‰€æŒ‰çš„MENUæœƒæŒ¾å¸¶è¢«é¸ä¸­çš„item's IDèˆ‡position.
 		registerForContextMenu(getListView());
 		
 		
@@ -43,7 +43,7 @@ public class TodoOverview extends ListActivity{
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
-		//MenuÀÉ:¦b layout¤Uªº menu(¦Û¤v new¥X¨Óªº).
+		//Menuæª”:åœ¨ layoutä¸‹çš„ menu(è‡ªå·± newå‡ºä¾†çš„).
 		inflater.inflate(R.menu.listmenu, menu);
 		return true;
 	}
@@ -56,7 +56,7 @@ public class TodoOverview extends ListActivity{
 			createTodo();
 			return true;
 		case DELETE_ID:
-//	     	 ©Ò«öªºMENU·|®µ±a³Q¿ï¤¤ªºitem's ID»Pposition.
+//	     	 æ‰€æŒ‰çš„MENUæœƒæŒ¾å¸¶è¢«é¸ä¸­çš„item's IDèˆ‡position.
 			AdapterContextMenuInfo info = (AdapterContextMenuInfo)item.getMenuInfo();
 			
 			dbHelper.deleteTodo(info.id);
@@ -78,8 +78,8 @@ public class TodoOverview extends ListActivity{
 	
 	
 	//ListView and view (row) on which was clicked, position and. 
-	// [*****] ³o­ÓListView¬O¨Ï¥ÎSimpleCursorAdapter, §Ú­Ì°²³]³o­Óadapter©Ò¦^¶Çªºid, 
-	//         ¬Otableªº²Ä1­ÓÄæ¦ì¸ê®Æ, ¦Ó§Ú­Ìtable²Ä1­ÓÄæ¦ì¬O[_id], ©Ò¥H³o­Ó°Ñ¼Æid´N¬OÄæ¦ì[_id]ªº­È.
+	// [*****] é€™å€‹ListViewæ˜¯ä½¿ç”¨SimpleCursorAdapter, æˆ‘å€‘å‡è¨­é€™å€‹adapteræ‰€å›å‚³çš„id, 
+	//         æ˜¯tableçš„ç¬¬1å€‹æ¬„ä½è³‡æ–™, è€Œæˆ‘å€‘tableç¬¬1å€‹æ¬„ä½æ˜¯[_id], æ‰€ä»¥é€™å€‹åƒæ•¸idå°±æ˜¯æ¬„ä½[_id]çš„å€¼.
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
@@ -115,7 +115,7 @@ public class TodoOverview extends ListActivity{
 		setListAdapter(notes);
 	}
 
-	//¨Ï¥Î Menu®É¡A´N·|call.
+	//ä½¿ç”¨ Menuæ™‚ï¼Œå°±æœƒcall.
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v,
 			ContextMenuInfo menuInfo) {

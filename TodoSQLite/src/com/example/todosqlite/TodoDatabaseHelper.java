@@ -45,4 +45,3 @@ public class TodoDatabaseHelper extends SQLiteOpenHelper {
 }
 
 //http://puremonkey2010.blogspot.tw/2011/09/android-sqlite.html
-//delete()¨S¦³°µ.

@@ -39,24 +39,24 @@ public class TodoDetails extends Activity{
 			public void onClick(View v) {
 				setResult(RESULT_OK);
 				finish();
-				// [***] finish()«á, ·|call onSaveInstanceState(...).
+				// [***] finish()å¾Œ, æœƒcall onSaveInstanceState(...).
 			}
 		});
 	}
 
 	private void populateFields() {
-		// [***] mRowId!=null ªí¥Ü¬O½s¿è¼Ò¦¡.
+		// [***] mRowId!=null è¡¨ç¤ºæ˜¯ç·¨è¼¯æ¨¡å¼.
 		if(mRowId != null){
 			Cursor todo = mDbHelper.fetchTodo(mRowId);
 			startManagingCursor(todo);
 			String category = todo.getString(todo.getColumnIndexOrThrow(TodoDbAdapter.KEY_CATEGORY));
 			
-			// ³]©wspinner item »P todoªºcategory ¤@­P.
+			// è¨­å®šspinner item èˆ‡ todoçš„category ä¸€è‡´.
 			for(int i = 0; i < mCategory.getCount(); i++){
-				//[***] getItemAtPosition(i) §ì¦ì¸miªºitem.
+				//[***] getItemAtPosition(i) æŠ“ä½ç½®içš„item.
 				String s = (String)mCategory.getItemAtPosition(i);
 				Log.e(null, s + " " + category);
-				//[***] equalsIgnoreCase(...) ¤ñ¸û¦r¦ê¥B©¿²¤¤j¤p¼g.
+				//[***] equalsIgnoreCase(...) æ¯”è¼ƒå­—ä¸²ä¸”å¿½ç•¥å¤§å°å¯«.
 				if(s.equalsIgnoreCase(category)){
 					mCategory.setSelection(i);
 				}
@@ -67,7 +67,7 @@ public class TodoDetails extends Activity{
 		}
 	}
 	
-	// ¦bActivity ³Q±ş±¼¤§«e, ¨t²Î·|call³o­Ómethod.
+	// åœ¨Activity è¢«æ®ºæ‰ä¹‹å‰, ç³»çµ±æœƒcallé€™å€‹method.
 	@Override
 	protected void onSaveInstanceState(Bundle outState){
 		super.onSaveInstanceState(outState);
@@ -93,9 +93,9 @@ public class TodoDetails extends Activity{
 		String summary = mTitleText.getText().toString();
 		String description = mBodyText.getText().toString();
 		
-		// mRowId: °O¦í²{¦bªºtodo½s¸¹
-		// ¦pªG¨S¦³mRowId, ªí¥Ü¬O¤@µ§·stodo.
-		// ¦pªG¦³mRowId, ªí¥Ü¬O½s¿ètodo.
+		// mRowId: è¨˜ä½ç¾åœ¨çš„todoç·¨è™Ÿ
+		// å¦‚æœæ²’æœ‰mRowId, è¡¨ç¤ºæ˜¯ä¸€ç­†æ–°todo.
+		// å¦‚æœæœ‰mRowId, è¡¨ç¤ºæ˜¯ç·¨è¼¯todo.
 		if(mRowId == null){
 			long id = mDbHelper.createTodo(category, summary, description);
 			if(id > 0){
