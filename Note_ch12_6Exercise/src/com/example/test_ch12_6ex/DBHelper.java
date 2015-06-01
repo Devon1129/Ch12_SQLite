@@ -1,4 +1,5 @@
 package com.example.test_ch12_6ex;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -40,6 +41,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		
 	}
 	
+	//只加一筆資料
 	public void mInsert(){
 		SQLiteDatabase db = getWritableDatabase();
 		ContentValues cv = new ContentValues();
@@ -51,6 +53,43 @@ public class DBHelper extends SQLiteOpenHelper {
 		db.insert(Table_Name, null, cv);
 		db.close();
 	}
+/*	
+ *  //插入多條資料
+	public void mInsert(){
+		SQLiteDatabase db = getWritableDatabase();
+		ContentValues[] rec = new ContentValues[3];
+		for(int i = 0; i < rec.length; i++){
+			rec[i] = new ContentValues();
+		}
+		
+		rec[0].put("cusNo", "A01");
+		rec[0].put("cusNa", "jj");
+		rec[0].put("cusPho", "586-45568");
+		rec[0].put("cusAdd", "taiwan");
+		
+		rec[1].put("cusNo", "A02");
+		rec[1].put("cusNa", "Qoo");
+		rec[1].put("cusPho", "888-45568");
+		rec[1].put("cusAdd", "taiwan");
+		
+		rec[2].put("cusNo", "A03");
+		rec[2].put("cusNa", "wowo");
+		rec[2].put("cusPho", "444-45568");
+		rec[2].put("cusAdd", "taiwan");
+	
+		//一個一個數數.
+//		for(int i=0; i < rec.length; i++){
+//			db.insert(Table_Name, null, rec[i]);
+//		}
+		
+		//一次數完.
+		for(ContentValues row:rec){
+			db.insert(Table_Name, null, row);
+		}
+		
+		db.close();
+	}
+*/
 	
 	public String FinRec(String CusNo){
 		// 1. 建立DB連線
@@ -68,6 +107,8 @@ public class DBHelper extends SQLiteOpenHelper {
 		
 		String fld = ""; 
 
+		//cursor.getColumnCount():欄位數 
+		//cursor.getCount():幾筆資料數. 
 		if(cursor.getCount() != 0){
 			// 4. 指向某筆資料 
 			while(cursor.moveToNext()){

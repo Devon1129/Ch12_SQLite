@@ -54,8 +54,12 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			String result = "";
+			
+			//**注意抓取順序:先存取抓到的 editText(cusNo)，
+			//再將 editText放入 method(FinRec)，得到的值，去做判斷。
 			String cusNo = etNo.getText().toString().trim();
 			String rec = dbHelper.FinRec(cusNo);
+			
 			if(rec.length() != 0){
 				result = "客戶資料:" + rec;
 			}else{
