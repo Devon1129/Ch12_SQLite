@@ -41,7 +41,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		
 	}
 	
-	//¥u¥[¤@µ§¸ê®Æ
+	//åªåŠ ä¸€ç­†è³‡æ–™
 	public void mInsert(){
 		SQLiteDatabase db = getWritableDatabase();
 		ContentValues cv = new ContentValues();
@@ -54,7 +54,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		db.close();
 	}
 /*	
- *  //´¡¤J¦h±ø¸ê®Æ
+ *  //æ’å…¥å¤šæ¢è³‡æ–™
 	public void mInsert(){
 		SQLiteDatabase db = getWritableDatabase();
 		ContentValues[] rec = new ContentValues[3];
@@ -77,12 +77,12 @@ public class DBHelper extends SQLiteOpenHelper {
 		rec[2].put("cusPho", "444-45568");
 		rec[2].put("cusAdd", "taiwan");
 	
-		//¤@­Ó¤@­Ó¼Æ¼Æ.
+		//ä¸€å€‹ä¸€å€‹æ•¸æ•¸.
 //		for(int i=0; i < rec.length; i++){
 //			db.insert(Table_Name, null, rec[i]);
 //		}
 		
-		//¤@¦¸¼Æ§¹.
+		//ä¸€æ¬¡æ•¸å®Œ.
 		for(ContentValues row:rec){
 			db.insert(Table_Name, null, row);
 		}
@@ -92,35 +92,35 @@ public class DBHelper extends SQLiteOpenHelper {
 */
 	
 	public String FinRec(String CusNo){
-		// 1. «Ø¥ßDB³s½u
+		// 1. å»ºç«‹DBé€£ç·š
 		SQLiteDatabase db = getReadableDatabase();
-		// 2. «Ø¥ßSQL»y¥y
-		//¥[¤J·j´M±ø¥ó: " where CusNo like ?"
+		// 2. å»ºç«‹SQLèªå¥
+		//åŠ å…¥æœå°‹æ¢ä»¶: " where CusNo like ?"
 		String sql = "select * from " + Table_Name + " where CusNo like ?";
-		//·j´M±ø¥ó©ñ¤J array¡A¥i¹ïÀ³¦h­Ó?°Ñ¼Æ
+		//æœå°‹æ¢ä»¶æ”¾å…¥ arrayï¼Œå¯å°æ‡‰å¤šå€‹?åƒæ•¸
 		String[] args ={"%" + CusNo + "%"}; 
-		// 3. °õ¦æ cursor. §@·j´MDBªº°Ê§@.
-		//    cursor ¤º§t¦³¤@­Ótable, ®Ú¾Úcursor¦ì¸m«ü¦V¤£¦Pµ§¸ê®Æ(row).
+		// 3. åŸ·è¡Œ cursor. ä½œæœå°‹DBçš„å‹•ä½œ.
+		//    cursor å…§å«æœ‰ä¸€å€‹table, æ ¹æ“šcursorä½ç½®æŒ‡å‘ä¸åŒç­†è³‡æ–™(row).
 		Cursor cursor = db.rawQuery(sql, args);
-		// [***] Åª¨úcursor«ü¨ì tableªºÄæ¦ì¼Æ¶q => ³o¸Ì¼Æ¶q¬O4, ¦]¬°¦³Äæ¦ìCusNo/CusNa/CusPho/CusAddr.
+		// [***] è®€å–cursoræŒ‡åˆ° tableçš„æ¬„ä½æ•¸é‡ => é€™è£¡æ•¸é‡æ˜¯4, å› ç‚ºæœ‰æ¬„ä½CusNo/CusNa/CusPho/CusAddr.
 		int columnCount = cursor.getColumnCount();
 		
 		String fld = ""; 
 
-		//cursor.getColumnCount():Äæ¦ì¼Æ 
-		//cursor.getCount():´Xµ§¸ê®Æ¼Æ. 
+		//cursor.getColumnCount():æ¬„ä½æ•¸ 
+		//cursor.getCount():å¹¾ç­†è³‡æ–™æ•¸. 
 		if(cursor.getCount() != 0){
-			// 4. «ü¦V¬Yµ§¸ê®Æ 
+			// 4. æŒ‡å‘æŸç­†è³‡æ–™ 
 			while(cursor.moveToNext()){
 									
-				//[***] ÅÜ¼Æ¨Ï¥Î½d³ò.
-				//   ®Ú¾Ú«Å§iªº¦ì¸m, ¨M©w¥i¨Ï¥Î½d³ò.
-				//   {} «Ê³¬½d³ò, ¤]´N¬O»¡, {}¥~­±ªº¤H¬İ¤£¨ì¥¦ªº¤º³¡.
+				//[***] è®Šæ•¸ä½¿ç”¨ç¯„åœ.
+				//   æ ¹æ“šå®£å‘Šçš„ä½ç½®, æ±ºå®šå¯ä½¿ç”¨ç¯„åœ.
+				//   {} å°é–‰ç¯„åœ, ä¹Ÿå°±æ˜¯èªª, {}å¤–é¢çš„äººçœ‹ä¸åˆ°å®ƒçš„å…§éƒ¨.
 //				String fld = ""; 
 						
-				// 5. Åª¸ê®Æ	
-				//   [***] cursor Åª¤@­ÓStringÃş«¬ªº¸ê®Æ, ®Ú¾Ú¿é¤JªºÄæ¦ìindex(¦ì¸m).
-				// ¦^¶Çªº¸ê®Æ®æ¦¡: "CusNo:CusNa"
+				// 5. è®€è³‡æ–™	
+				//   [***] cursor è®€ä¸€å€‹Stringé¡å‹çš„è³‡æ–™, æ ¹æ“šè¼¸å…¥çš„æ¬„ä½index(ä½ç½®).
+				// å›å‚³çš„è³‡æ–™æ ¼å¼: "CusNo:CusNa"
 				fld += cursor.getString(0) + ":" + cursor.getString(1) + "\n";
 				
 //				for(int i = 0; i < columnCount; i++){
@@ -129,9 +129,9 @@ public class DBHelper extends SQLiteOpenHelper {
 			}
 		}
 		
-		// 6. Ãö±¼cursor.
+		// 6. é—œæ‰cursor.
 		cursor.close();
-		// 7. Ãö±¼ DB³s½u
+		// 7. é—œæ‰ DBé€£ç·š
 		db.close();
 		
 		return fld;		

@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
          btnOk.setOnClickListener(btnOkListener);
     }
     
-    //¬¡°Ê«ì´_§@¥Î®É¡A©I¥s¦¹¤èªk¡C§@¥Î¬O¡F¦pªG DBHelper¤£¦s¦b¡A«h­«·s³Ğ«Ø¤@­Ó¡C
+    //æ´»å‹•æ¢å¾©ä½œç”¨æ™‚ï¼Œå‘¼å«æ­¤æ–¹æ³•ã€‚ä½œç”¨æ˜¯ï¼›å¦‚æœ DBHelperä¸å­˜åœ¨ï¼Œå‰‡é‡æ–°å‰µå»ºä¸€å€‹ã€‚
     @Override
 	protected void onResume() {
 		super.onResume();
@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
 		}
 	}
 
-    //¬¡°Ê¼È°±®É¡A©I¥s¦¹¤èªk¡C§@¥Î¬O:Ãö³¬ DBHelper¡A¨Ã§â dbHelper ³]¬° null¡AÄÀ©ñ©Ò¥e¥Îªº¸ê·½¡C
+    //æ´»å‹•æš«åœæ™‚ï¼Œå‘¼å«æ­¤æ–¹æ³•ã€‚ä½œç”¨æ˜¯:é—œé–‰ DBHelperï¼Œä¸¦æŠŠ dbHelper è¨­ç‚º nullï¼Œé‡‹æ”¾æ‰€å ç”¨çš„è³‡æºã€‚
     @Override
 	protected void onPause() {
 		super.onPause();
@@ -55,15 +55,15 @@ public class MainActivity extends Activity {
 		public void onClick(View v) {
 			String result = "";
 			
-			//**ª`·N§ì¨ú¶¶§Ç:¥ı¦s¨ú§ì¨ìªº editText(cusNo)¡A
-			//¦A±N editText©ñ¤J method(FinRec)¡A±o¨ìªº­È¡A¥h°µ§PÂ_¡C
+			//**æ³¨æ„æŠ“å–é †åº:å…ˆå­˜å–æŠ“åˆ°çš„ editText(cusNo)ï¼Œ
+			//å†å°‡ editTextæ”¾å…¥ method(FinRec)ï¼Œå¾—åˆ°çš„å€¼ï¼Œå»åšåˆ¤æ–·ã€‚
 			String cusNo = etNo.getText().toString().trim();
 			String rec = dbHelper.FinRec(cusNo);
 			
 			if(rec.length() != 0){
-				result = "«È¤á¸ê®Æ:" + rec;
+				result = "å®¢æˆ¶è³‡æ–™:" + rec;
 			}else{
-				result = "µL¦¹¸ê®Æ:" + cusNo;
+				result = "ç„¡æ­¤è³‡æ–™:" + cusNo;
 			}
 			
 			Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
