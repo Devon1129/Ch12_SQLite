@@ -103,9 +103,12 @@ public class DBHelper extends SQLiteOpenHelper {
 		//    cursor 內含有一個table, 根據cursor位置指向不同筆資料(row).
 		Cursor cursor = db.rawQuery(sql, args);
 		// [***] 讀取cursor指到 table的欄位數量 => 這裡數量是4, 因為有欄位CusNo/CusNa/CusPho/CusAddr.
-
+		
+		//sql => select * from Cus where cusNo like '%2%'
+		//    表示, 從table [Cus] 查詢苻合 欄位[cusNo]包含"2" 的rows.
+		
 		int columns = cursor.getColumnCount();//欄位
-
+	
 		String fld = null;
 		//根據 rawQuery的條件，獲取資料筆數。
 		if(cursor.getCount() != 0){//資料筆數
