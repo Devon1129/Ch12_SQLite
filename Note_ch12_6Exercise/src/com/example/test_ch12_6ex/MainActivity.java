@@ -53,8 +53,7 @@ public class MainActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			//**注意抓取順序:先存取抓到的 editText(cusNo)，
-			//    再將 editText放入 method(FinRec)，得到的值，去做判斷。
+			//**注意抓取順序:editText(cusNo)→判斷 cusNo→ method FinRec →判斷 rec。
 			
 			String cusNo = etNo.getText().toString().trim();
 		/*
@@ -69,10 +68,10 @@ public class MainActivity extends Activity {
 			      (false && Exception)-> false(因為第一個判斷為 false，就不再判斷了)。
 		 * 
 		 */
-			if(cusNo != null && cusNo.length() != 0 ){
+			if(cusNo.length() != 0 ){
 				String rec = dbHelper.FinRec(cusNo);
 				String result;
-				if(rec != null){
+				if(rec != null && rec.length() != 0){
 					result = "客戶資料:" + rec;
 				}else{
 					result = "無此資料:" + cusNo;

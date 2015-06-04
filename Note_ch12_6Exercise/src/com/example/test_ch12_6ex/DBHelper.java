@@ -103,10 +103,23 @@ public class DBHelper extends SQLiteOpenHelper {
 		//    cursor 內含有一個table, 根據cursor位置指向不同筆資料(row).
 		Cursor cursor = db.rawQuery(sql, args);
 		// [***] 讀取cursor指到 table的欄位數量 => 這裡數量是4, 因為有欄位CusNo/CusNa/CusPho/CusAddr.
-		int columnCount = cursor.getColumnCount();
-		
-		String fld = ""; 
 
+		int columns = cursor.getColumnCount();//欄位
+
+		String fld = null;
+		//根據 rawQuery的條件，獲取資料筆數。
+		if(cursor.getCount() != 0){//資料筆數
+			while(cursor.moveToNext()){
+				fld = "";
+				for(int i = 0; i < columns; i++){
+					//欄位資料的串接。
+					fld += cursor.getString(i) + "\n";
+				}
+				
+			}
+		}
+
+	/*
 		//cursor.getColumnCount():欄位數 
 		//cursor.getCount():幾筆資料數. 
 		if(cursor.getCount() != 0){
@@ -116,18 +129,21 @@ public class DBHelper extends SQLiteOpenHelper {
 				//[***] 變數使用範圍.
 				//   根據宣告的位置, 決定可使用範圍.
 				//   {} 封閉範圍, 也就是說, {}外面的人看不到它的內部.
-//				String fld = ""; 
+				String fld = ""; 
 						
 				// 5. 讀資料	
 				//   [***] cursor 讀一個String類型的資料, 根據輸入的欄位index(位置).
 				// 回傳的資料格式: "CusNo:CusNa"
 				fld += cursor.getString(0) + ":" + cursor.getString(1) + "\n";
 				
-//				for(int i = 0; i < columnCount; i++){
-//					fld += cursor.getString(i)  + ":";
-//				}
+				for(int i = 0; i < columnCount; i++){
+					fld += cursor.getString(i)  + ":";
+				}
 			}
 		}
+		
+		*/
+		
 		
 		// 6. 關掉cursor.
 		cursor.close();
