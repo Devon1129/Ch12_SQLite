@@ -63,20 +63,20 @@ public class MainActivity extends Activity {
 			String CusPho = etPho.getText().toString().trim();
 			String CusAdd = etAdd.getText().toString().trim();
 			if(CusNo.equals("") || CusNa.equals("")){
-				Toast.makeText(MainActivity.this, "½Ğ¿é¤J±ı·s¼Wªº«È¤á¸ê®Æ!", Toast.LENGTH_SHORT).show();
+				Toast.makeText(MainActivity.this, "è«‹è¼¸å…¥æ¬²æ–°å¢çš„å®¢æˆ¶è³‡æ–™!", Toast.LENGTH_SHORT).show();
 				return;
 			}
 			
 			long rowID = dbHelper.insertRec(CusNo, CusNa, CusPho, CusAdd);
 			
-			//**°µ§PÂ_®É¡A­n±N¾÷²v°ªªº©ñ¦b«e­±¡C
-			//µ{¦¡°õ¦æ®É¡A°õ¦æ¦¨¥\ªº§PÂ_­n©ñ©ó«e­±§PÂ_¸û¦n¡C
+			//**åšåˆ¤æ–·æ™‚ï¼Œè¦å°‡æ©Ÿç‡é«˜çš„æ”¾åœ¨å‰é¢ã€‚
+			//ç¨‹å¼åŸ·è¡Œæ™‚ï¼ŒåŸ·è¡ŒæˆåŠŸçš„åˆ¤æ–·è¦æ”¾æ–¼å‰é¢åˆ¤æ–·è¼ƒå¥½ã€‚
 			String msg = null;
 			if(rowID != -1){
-				msg = "·s¼W°O¿ı ¦¨¥\!\n" +
-						"¥Ø«e«È¤á¸ê®Æªí¦@¦³ " + dbHelper.recCount() + "µ§";
+				msg = "æ–°å¢è¨˜éŒ„ æˆåŠŸ!\n" +
+						"ç›®å‰å®¢æˆ¶è³‡æ–™è¡¨å…±æœ‰ " + dbHelper.recCount() + "ç­†";
 			}else{
-				msg = "·s¼W¬ö¿ı ¥¢±Ñ!";
+				msg = "æ–°å¢ç´€éŒ„ å¤±æ•—!";
 			}
 			Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
 		} 	
