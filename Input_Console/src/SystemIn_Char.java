@@ -5,16 +5,16 @@ public class SystemIn_Char {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		//¿é¤J¦ê¬y
+		//è¼¸å…¥ä¸²æµ
 		java.io.InputStream in = System.in;
 		char c;
 		try{
-			System.out.print("½Ð¿é¤J¦r¦ê: ");
+			System.out.print("è«‹è¼¸å…¥å­—ä¸²: ");
 			while((c = (char) in.read()) > 0){
 				System.out.print(c);
 				
 				if(c == '\n'){
-					System.out.print("½Ð¿é¤J¦r¦ê: ");
+					System.out.print("è«‹è¼¸å…¥å­—ä¸²: ");
 				}
 					
 			}

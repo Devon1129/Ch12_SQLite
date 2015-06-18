@@ -13,14 +13,14 @@ public class IoTest {
 	 * @param args
 	 */
 	public static void main(String[] args) throws IOException{
-//		System.out.println("©R¥O¦C¿é¤J" + args.length + "­Ó");
+//		System.out.println("å‘½ä»¤åˆ—è¼¸å…¥" + args.length + "å€‹");
 //        if(args.length > 0){
 //            for(int i = 0; i < args.length; i++){
 //                System.out.println("args[" + i + "]=" + args[i]);
 //            }
 //        }
 //        else{
-//            System.out.print("©R¥O¦C¿é¤J¨S¦³¤¸¯À!");
+//            System.out.print("å‘½ä»¤åˆ—è¼¸å…¥æ²’æœ‰å…ƒç´ !");
 //        }
 //        System.out.println();
 
@@ -42,45 +42,45 @@ public class IoTest {
 	
 	public static void BufTest1() throws IOException{
 		 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        //¿é¥X¸ê®Æ¬y¤J½w½Ä¾¹«á¦A¿é¥X¨ì¨t²Î¼Ð·Ç¿é¥X
-        String s = "¦r¤¸¿é¥X¸ê®Æ¬y BufferedWriter ´ú¸Õ!";
-        bw.write(s, 0, s.length()); //¥Îwrite ¤èªk±Ns ¿é¥X
-        bw.flush(); //¥Î flush¤èªk²M°£
+        //è¼¸å‡ºè³‡æ–™æµå…¥ç·©è¡å™¨å¾Œå†è¼¸å‡ºåˆ°ç³»çµ±æ¨™æº–è¼¸å‡º
+        String s = "å­—å…ƒè¼¸å‡ºè³‡æ–™æµ BufferedWriter æ¸¬è©¦!";
+        bw.write(s, 0, s.length()); //ç”¨write æ–¹æ³•å°‡s è¼¸å‡º
+        bw.flush(); //ç”¨ flushæ–¹æ³•æ¸…é™¤
 	}
 	
 	public static void BufTest2() throws IOException{
-		//«e­±¤T­Ó¦r¤£¿é¥X
+		//å‰é¢ä¸‰å€‹å­—ä¸è¼¸å‡º
 		BufferedWriter bs = new BufferedWriter(new OutputStreamWriter(System.out));
-        //¿é¥X¸ê®Æ¬y¤J½w½Ä¾¹«á¦A¿é¥X¨ì test.txtÀÉ®×
-        String s = "¦r¤¸¿é¥X¸ê®Æ¬y BufferedWrite´ú¸Õ!";
-        bs.write(s, 3 ,s.length() - 3); //¥Î write¤èªk±N s¿é¥X
-        bs.flush(); //¥Î flush¤èªk²M°£
+        //è¼¸å‡ºè³‡æ–™æµå…¥ç·©è¡å™¨å¾Œå†è¼¸å‡ºåˆ° test.txtæª”æ¡ˆ
+        String s = "å­—å…ƒè¼¸å‡ºè³‡æ–™æµ BufferedWriteæ¸¬è©¦!";
+        bs.write(s, 3 ,s.length() - 3); //ç”¨ writeæ–¹æ³•å°‡ sè¼¸å‡º
+        bs.flush(); //ç”¨ flushæ–¹æ³•æ¸…é™¤
 	}
 	
 	public static void BufWrtTxtTest() throws IOException{
 		BufferedWriter bw = new BufferedWriter(new FileWriter("test.txt"));
-	    //¿é¥X¸ê®Æ¬y¤J½w½Ä¾¹«á¦A¿é¥X¨ì test.txtÀÉ®×¤¤
-	    String s = "¦r¤¸¿é¥X¸ê®Æ¬y BufferedWriter´ú¸Õ!";
-	    bw.write(s, 0, s.length()); // ¥Î write¤èªk±Ns ¿é¥X
-	    bw.close(); //¥Î close¤èªk¿é¥X§¹«áÃö³¬
+	    //è¼¸å‡ºè³‡æ–™æµå…¥ç·©è¡å™¨å¾Œå†è¼¸å‡ºåˆ° test.txtæª”æ¡ˆä¸­
+	    String s = "å­—å…ƒè¼¸å‡ºè³‡æ–™æµ BufferedWriteræ¸¬è©¦!";
+	    bw.write(s, 0, s.length()); // ç”¨ writeæ–¹æ³•å°‡s è¼¸å‡º
+	    bw.close(); //ç”¨ closeæ–¹æ³•è¼¸å‡ºå®Œå¾Œé—œé–‰
 	}
 	
 	public static void BufKeyboardTest() throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        // ¦r¤¸¿é¤J¸ê®Æ¬y¤J½w½Ä¾¹Ãþ§Oª«¥ó br
+        // å­—å…ƒè¼¸å…¥è³‡æ–™æµå…¥ç·©è¡å™¨é¡žåˆ¥ç‰©ä»¶ br
         String line;
-        System.out.print("½Ð¿é¤J¤@­Ó¦r¦ê:");
-        System.out.flush(); // ²M°£System.out¤¤ªº¸ê®Æ
-        line = br.readLine(); //Åª¤J«á«ü©wµ¹¦r¦ê line
+        System.out.print("è«‹è¼¸å…¥ä¸€å€‹å­—ä¸²:");
+        System.out.flush(); // æ¸…é™¤System.outä¸­çš„è³‡æ–™
+        line = br.readLine(); //è®€å…¥å¾ŒæŒ‡å®šçµ¦å­—ä¸² line
         System.out.println(line);
 	}
 	
 	public static void BufRedFileTest() throws IOException{
 		BufferedReader br = new BufferedReader(new FileReader("test.txt"));
-        //±qÀÉ®×¿é¤J¸ê®Æ¬y¤J½w½Ä¾¹Ãþ§Oª«¥ó br
+        //å¾žæª”æ¡ˆè¼¸å…¥è³‡æ–™æµå…¥ç·©è¡å™¨é¡žåˆ¥ç‰©ä»¶ br
         String line;
-        System.out.println("±qÀÉ®×¤ºÅª¤Jªº¸ê®Æ¦p¤U");
-        line = br.readLine(); //±N brÅª¤J«á«ü©wµ¹¦r¦êline
+        System.out.println("å¾žæª”æ¡ˆå…§è®€å…¥çš„è³‡æ–™å¦‚ä¸‹");
+        line = br.readLine(); //å°‡ brè®€å…¥å¾ŒæŒ‡å®šçµ¦å­—ä¸²line
         System.out.println(line);
 
 	}
