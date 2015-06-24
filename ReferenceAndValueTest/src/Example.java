@@ -26,10 +26,10 @@ public class Example {
 		a = 100;
 	}
 	/*
-	 * °ò¥» type(8­Ó)¶Ç value¡A¥¦·| copy¤@¥÷­È¶Ç¤J¡A(call by value)(¾Ö¦³¦Û¤vªº value)¡F
-	 * ¨ä¥L type¶Ç reference¡A«ü¦V instance(¡Bobject)¡C(call by reference)¡A
-	 * (¤j®a«ü¦V¬Û¦Pªº¦a§}¡A­×§ï®É¤j®a³£¨ü¼vÅT)¡C
-	 *** ª`·N String ¬O¯S§O type¡A¥¦¬O reference type ¡A¦ı¬O°Ñ¼Æ¶Ç»¼®É¡A¬O¶Ç value¡C
+	 * åŸºæœ¬ type(8å€‹)å‚³ valueï¼Œå®ƒæœƒ copyä¸€ä»½å€¼å‚³å…¥ï¼Œ(call by value)(æ“æœ‰è‡ªå·±çš„ value)ï¼›
+	 * å…¶ä»– typeå‚³ referenceï¼ŒæŒ‡å‘ instance(ã€object)ã€‚(call by reference)ï¼Œ
+	 * (å¤§å®¶æŒ‡å‘ç›¸åŒçš„åœ°å€ï¼Œä¿®æ”¹æ™‚å¤§å®¶éƒ½å—å½±éŸ¿)ã€‚
+	 *** æ³¨æ„ String æ˜¯ç‰¹åˆ¥ typeï¼Œå®ƒæ˜¯ reference type ï¼Œä½†æ˜¯åƒæ•¸å‚³éæ™‚ï¼Œæ˜¯å‚³ valueã€‚
 	 */
 }
 
