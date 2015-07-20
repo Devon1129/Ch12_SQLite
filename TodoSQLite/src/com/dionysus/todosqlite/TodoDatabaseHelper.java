@@ -1,4 +1,4 @@
-package com.example.todosqlite;
+package com.dionysus.todosqlite;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

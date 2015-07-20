@@ -11,7 +11,17 @@
     <string name="todo_edit_summary">Summary</string>
     <string name="todo_edit_description">Description</string>
     <string name="todo_edit_confirm">Confirm</string>
+    <string name="Title">Enter your todo</string>
+    <string name="Summary">Summary</string>
+    <string name="Description">Description</string>
+   
     <color name="listcolor">#FFE87C</color>
     <color name="black">#000000</color>
-
+    <color name="dkgray">#00FF00FF</color>
+    <color name="blue">#FF0000FF</color>
+    <color name="cyan">#FF00FFFF</color>
+    <color name="yellow">#FFFFFF00</color>
+    <color name="magenta">#FFFF00FF</color>
+    <color name="green">#FF00FF00</color>
+    
 </resources>

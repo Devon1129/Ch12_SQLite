@@ -2,13 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" 
-    android:background="@color/listcolor">
+    
+    android:orientation="vertical" >
+
     <Spinner 
         android:id="@+id/category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/magenta"
         android:entries="@array/priorities" />
+    
     <LinearLayout
         android:id="@+id/LinearLayout01"
         android:layout_height="wrap_content"
@@ -16,18 +19,22 @@
         <EditText 
             android:id="@+id/todo_edid_summary"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_weight="1"
-            android:hint="Summary" />
+            android:textColor="@color/blue"
+            android:hint="@string/Summary" />
     </LinearLayout>
     
     <EditText
         android:id="@+id/todo_edit_description"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:hint="Description"
-        android:gravity="top" />
+        android:gravity="top|left"
+        android:hint="@string/Description"
+        android:background="@drawable/rainbow"
+        android:textSize="20sp" />
+
     <Button
         android:id="@+id/todo_edit_button"
         android:layout_width="wrap_content"

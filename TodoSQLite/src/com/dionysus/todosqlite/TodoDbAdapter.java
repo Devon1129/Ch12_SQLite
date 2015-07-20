@@ -1,4 +1,4 @@
-package com.example.todosqlite;
+package com.dionysus.todosqlite;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,6 +11,7 @@ public class TodoDbAdapter {
 	public static final String KEY_ROWID = "_id";
 	public static final String KEY_CATEGORY = "category";
 	public static final String KEY_SUMMARY = "summary";
+//	public static final String KEY_SUMMARY2 = "summary2";
 	public static final String KEY_DESCRIPTION = "description";
 	public static final String DATABASE_TABLE = "todo";
 	private Context context;
@@ -54,7 +55,9 @@ public class TodoDbAdapter {
 		}else{
 			msg = "刪除 資料 " + rowId;
 		}
-//		Toast.makeText(TodoDbAdapter.this, msg, Toast.LENGTH_SHORT);
+		Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+//		**TodoDbAdapter是一個 class，並沒有繼承 Activity，因此沒 View可以顯示，所以這裡特別傳入context來做顯示。
+//		Toast.makeText(TodoDbAdapter.this, msg, Toast.LENGTH_SHORT).show();
 		return database.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null) > 0;
 	}
 	

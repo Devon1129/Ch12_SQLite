@@ -1,4 +1,4 @@
-package com.example.todosqlite;
+package com.dionysus.todosqlite;
 
 import android.app.Activity;
 import android.database.Cursor;
@@ -18,21 +18,25 @@ public class TodoDetails extends Activity{
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
+		setContentView(R.layout.todo_edit);
+		
 		mDbHelper = new TodoDbAdapter(this);
 		mDbHelper.open();
-		setContentView(R.layout.todo_edit);
+		
+		// Get views
 		mCategory = (Spinner)findViewById(R.id.category);
 		mTitleText = (EditText)findViewById(R.id.todo_edid_summary);
 		mBodyText = (EditText)findViewById(R.id.todo_edit_description);
 		
-		Button confirmButton = (Button)findViewById(R.id.todo_edit_button);
-		mRowId = null;
+		
+//		mRowId = null;
 		Bundle extras = getIntent().getExtras();
-
 		if(extras != null){
 			mRowId = extras.getLong(TodoDbAdapter.KEY_ROWID);
 		}
 		populateFields();
+		
+		Button confirmButton = (Button)findViewById(R.id.todo_edit_button);
 		confirmButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -62,7 +66,7 @@ public class TodoDetails extends Activity{
 				}
 			}
 						
-			mTitleText.setText(todo.getString(todo.getColumnIndexOrThrow(TodoDbAdapter.KEY_SUMMARY)));
+ 			mTitleText.setText(todo.getString(todo.getColumnIndexOrThrow(TodoDbAdapter.KEY_SUMMARY)));
 			mBodyText.setText(todo.getString(todo.getColumnIndexOrThrow(TodoDbAdapter.KEY_DESCRIPTION)));
 		}
 	}
@@ -107,3 +111,5 @@ public class TodoDetails extends Activity{
 	}
 	
 }//end class TodoDetails.
+
+//

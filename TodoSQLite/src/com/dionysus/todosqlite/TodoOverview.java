@@ -1,4 +1,5 @@
-package com.example.todosqlite;
+package com.dionysus.todosqlite;
+
 import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -21,13 +22,13 @@ public class TodoOverview extends ListActivity{
 	private static final int DELETE_ID = Menu.FIRST + 1;
 	private TodoDbAdapter dbHelper;
 	private Cursor cursor;
-	private long mClickedItemId;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.todo_list);
-		this.getListView().setDividerHeight(2);
+		//setDividerHeight(20); 設定 分隔線高度
+		this.getListView().setDividerHeight(20);
 		dbHelper = new TodoDbAdapter(this);
 		dbHelper.open();
 		fillData();
@@ -83,7 +84,6 @@ public class TodoOverview extends ListActivity{
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		mClickedItemId = id;
 		
 		Intent i = new Intent(this, TodoDetails.class);
 		i.putExtra(TodoDbAdapter.KEY_ROWID, id);
@@ -106,8 +106,9 @@ public class TodoOverview extends ListActivity{
 		cursor = dbHelper.fetchAllTodos();
 		startManagingCursor(cursor);
 		
-		String[] from = new String[]{TodoDbAdapter.KEY_SUMMARY};
-		int[] to = new int[] {R.id.label};
+		String[] from = new String[]{TodoDbAdapter.KEY_SUMMARY, TodoDbAdapter.KEY_CATEGORY};
+//		int[] to = new int[] {R.id.label};
+		int[] to = new int[] {R.id.label, R.id.label2};
 		
 		//Now create an array adapter and set it to display using our row.
 		SimpleCursorAdapter notes = new SimpleCursorAdapter(this, 
