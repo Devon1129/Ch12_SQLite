@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ch12InsertRec</string>
+    <string name="tvPtTitle">請輸入客戶資料:</string>
+    <string name="tvPtCusNo">客戶編號:</string>
+    <string name="tvPtCusNa">客戶姓名:</string>
+    <string name="tvPtCusPho">客戶電話:</string>
+    <string name="tvPtCusAdd">客戶地址:</string>
+    <string name="btPtIns">新增記錄</string>
+    <string name="btPtCancel">重新輸入</string>
+    <string name="htCusNo">在此輸入客戶編號</string>
+    <string name="htCusNa">在此輸入客戶姓名</string>
+    <string name="htCusPho">在此輸入客戶電話</string>
+    <string name="htCusAdd">在此輸入客戶地址</string>
+    
+
+</resources>

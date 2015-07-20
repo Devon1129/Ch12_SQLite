@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ch12_6QueruRecExercise</string>
+    <string name="Title">輸入欲查詢的 客戶編號 :</string>
+    <string name="NO.">客戶編號</string>
+    <string name="etNO.">在此輸入客戶編號</string>
+    <string name="sure">確定</string>
+
+</resources>
