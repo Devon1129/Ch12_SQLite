@@ -33,7 +33,7 @@ public class CompDBHper extends SQLiteOpenHelper {
 		onCreate(db);
 	}
 	
-	public void insterDataInTABLE(){
+	public void createTABLE(){
 		SQLiteDatabase db = getWritableDatabase();
 		ContentValues[] rec = new ContentValues[3];
 		for(int i = 0; i < rec.length; i++){
@@ -71,10 +71,8 @@ public class CompDBHper extends SQLiteOpenHelper {
 		//rawQuery(String sql, String[] selectionArgs)
 		//sql:selest語句;selectionArgs:select語句中占位符參數的值。
 		Cursor recSet = db.rawQuery(sql, args);
-		//getColumnCount():獲取欄位數。
 		int columnCount = recSet.getColumnCount();
 		String fldSet = null;
-		//getCount:獲取幾筆資料。
 		if(recSet.getCount() != 0){
 			while(recSet.moveToNext()){
 				fldSet = "";

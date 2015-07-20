@@ -37,7 +37,7 @@ public class MainActivity extends Activity {
 		if(dbHper == null){
 			dbHper = new CompDBHper(this,"Company.db", null, 1);
 		}
-		dbHper.insterDataInTABLE();
+		dbHper.createTABLE();
 	}
 	
 	@Override
