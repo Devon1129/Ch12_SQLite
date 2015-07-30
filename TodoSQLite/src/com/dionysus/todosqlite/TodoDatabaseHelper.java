@@ -1,5 +1,6 @@
 package com.dionysus.todosqlite;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
@@ -41,7 +42,7 @@ public class TodoDatabaseHelper extends SQLiteOpenHelper {
 		onCreate(db);
 
 	}
-
+	
 }
 
 //http://puremonkey2010.blogspot.tw/2011/09/android-sqlite.html

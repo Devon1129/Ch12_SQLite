@@ -4,17 +4,19 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-//import android.support.v7.internal.widget.AdapterViewCompat.AdapterContextMenuInfo;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
+//import android.support.v7.internal.widget.AdapterViewCompat.AdapterContextMenuInfo;
 
 public class TodoOverview extends ListActivity{
 	private static final int ACTIVITY_CREATE = 0;
@@ -22,6 +24,7 @@ public class TodoOverview extends ListActivity{
 	private static final int DELETE_ID = Menu.FIRST + 1;
 	private TodoDbAdapter dbHelper;
 	private Cursor cursor;
+	private Button btnTitle;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +34,35 @@ public class TodoOverview extends ListActivity{
 		this.getListView().setDividerHeight(20);
 		dbHelper = new TodoDbAdapter(this);
 		dbHelper.open();
+		
+		//程式的最外層，判斷DB內是否有資料，沒有再加入自訂的資料。
+		// Better solution: 檢查preference 檔. 是否是第一次開啟本app.
+		// Check whether default record needed.
+		Cursor cur = dbHelper.fetchAllTodos();
+		if(cur.getCount() == 0)
+		{
+			dbHelper.createTodo("Reminder", "todo...", "This is first todo.");			
+		}
+		cur.close();
+		
 		fillData();
 		// [***]註冊 ContextMenu到 ListActivity裡.
 		//      讓ListActivity 的ListView與 MENU做連接，就會出現長按 Menu.
 		//      所按的MENU會挾帶被選中的item's ID與position.
 		registerForContextMenu(getListView());
 		
-		
+		btnTitle = (Button)findViewById(R.id.btnTitle);
+		btnTitle.setOnClickListener(btnListener);
 	}
 
+	private OnClickListener btnListener = new OnClickListener(){
+
+		@Override
+		public void onClick(View v) {
+			createTodo();
+		}
+	};
+	
 	//create the menu based on the XML definition.
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -94,7 +117,7 @@ public class TodoOverview extends ListActivity{
 	
 	//called with the result of the other activity
 	//requestCode was the origin request code send to the activity
-	//resultCode is the return code, 0 is everything is ok
+	//resultCode is the return code, 0 is everything is OK
 	//intend can be use to get some data from the caller.
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -107,7 +130,6 @@ public class TodoOverview extends ListActivity{
 		startManagingCursor(cursor);
 		
 		String[] from = new String[]{TodoDbAdapter.KEY_SUMMARY, TodoDbAdapter.KEY_CATEGORY};
-//		int[] to = new int[] {R.id.label};
 		int[] to = new int[] {R.id.label, R.id.label2};
 		
 		//Now create an array adapter and set it to display using our row.

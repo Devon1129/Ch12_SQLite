@@ -22,10 +22,9 @@ public class TodoDbAdapter {
 		this.context = context;
 	}
 	
-	public TodoDbAdapter open() throws SQLException{
+	public void open() throws SQLException{
 		dbHelper = new TodoDatabaseHelper(context);
 		database = dbHelper.getWritableDatabase();
-		return this;
 	}
 	
 	public void close(){
@@ -36,8 +35,9 @@ public class TodoDbAdapter {
 	//rowId for that note, otherwise return a -1 to indicate failure.
 	public long createTodo(String category, String summary, String description){
 		ContentValues initialValues = createContentValues(category, summary, description);
-		
+
 		return database.insert(DATABASE_TABLE, null, initialValues);
+	
 		
 	}
 	
