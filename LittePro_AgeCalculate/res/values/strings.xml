@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AppLitteProgram</string>
+    <string name="EnterBirthday">請輸入出生年月日</string>
+    <string name="YYYY">年(YYYY):</string>
+    <string name="MM">月(MM):</string>
+    <string name="DD">日(dd):</string>
+    <string name="Results">計算結果</string>
+    
+</resources>

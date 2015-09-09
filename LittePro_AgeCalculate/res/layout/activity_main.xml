@@ -1,0 +1,61 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/EnterBirthday" />
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TableRow>
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/YYYY"/>
+            <EditText
+                android:id="@+id/etYYYY"
+				android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint=""/>
+        </TableRow>
+
+        <TableRow>
+             <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/MM"/>
+            <EditText
+                android:id="@+id/etMM"
+				android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint=""/>
+        </TableRow>
+
+        <TableRow>
+			<TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/DD"/>
+            <EditText
+                android:id="@+id/etdd"
+				android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint=""/>
+        </TableRow>
+
+    </TableLayout>
+    
+    <Button 
+        android:id="@+id/btnResults"
+		android:layout_width="wrap_content"
+      	android:layout_height="wrap_content"
+      	android:text="@string/Results"/>
+
+</LinearLayout>
