@@ -14,9 +14,24 @@ public class Test {
 		Calendar calendar = Calendar.getInstance();		
 		
 		
-		if(isLeapYear(year)){
+//		if(isLeapYear(year)){
 
 	//		calendar.set(2015,Calendar.DECEMBER, 03);
+//			Date d1 = calendar.getTime();		
+//			
+//			calendar.set(year, month, date);
+//			Date d2 = calendar.getTime();
+//			
+//			
+//			long daterange = d1.getTime()- d2.getTime();
+//			//毫秒*秒*分*時，time = 一天的毫秒數。
+//			long time = 1000*60*60*24;
+//			
+//			int days = (int)(daterange/time);
+//			//天數/365 = 年數.
+//			int yearsAmount = (int)days/365;
+//			return yearsAmount;
+//		}else{
 			Date d1 = calendar.getTime();		
 			
 			calendar.set(year, month, date);
@@ -31,9 +46,7 @@ public class Test {
 			//天數/365 = 年數.
 			int yearsAmount = (int)days/365;
 			return yearsAmount;
-		}else{
-			return 0;
-		}
+//		}
 		
 	}
 	

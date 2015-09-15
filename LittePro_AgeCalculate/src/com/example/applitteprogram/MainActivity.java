@@ -21,7 +21,7 @@ public class MainActivity extends Activity {
 	private Test test;
 	private String msg;
 	private int result;
-	private int[] MMdate = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	private int[] MMdate = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,33 +78,45 @@ public class MainActivity extends Activity {
 			int YYYY = Integer.parseInt(etYYYY.getText().toString());
 			
 			if(test.isLeapYear(YYYY)){
-				ageCalculate();
-				msg = "你現在輸入的實際年齡為 " + result + "歲\n";
-				ShowMsgAlertDialog(msg + "此年是閏年!!!");
+				try {
+					ageCalculate();
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+//				msg = "你現在輸入的實際年齡為 " + result + "歲\n";
+//				ShowMsgAlertDialog(msg + "\n此年是閏年!!!");
 			}else{
-				ageCalculate();
-				msg = "你現在輸入的實際年齡為 " + result + "歲\n";
+				try {
+					ageCalculate();
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+//				msg = "你現在輸入的實際年齡為 " + result + "歲\n";
+//				ShowMsgAlertDialog(msg);
 			}
 
 		}//end onClick.   	
     };//end ResultListener.
     
-    private void ageCalculate(){
+    //計算年齡
+    private String ageCalculate() throws ParseException{
     	int YYYY = Integer.parseInt(etYYYY.getText().toString());
 		int MM = Integer.parseInt(etMM.getText().toString());
 		int dd = Integer.parseInt(etdd.getText().toString());
 
 		
 		int yearNow = Calendar.getInstance().get(Calendar.YEAR);
-		int monthNow = Calendar.getInstance().get(Calendar.MONTH) + 1;
-		int dayNow = Calendar.getInstance().get(Calendar.DATE);
+//		int monthNow = Calendar.getInstance().get(Calendar.MONTH) + 1;
+//		int dayNow = Calendar.getInstance().get(Calendar.DATE);
 		
 		//判斷輸入的年、月、日
     	if( (YYYY > yearNow) || (YYYY < 1) || (MM > 12) || (MM < 1) ) 
 		{
 			msg = "你所輸入的出生[年月]不正確!!!";
 			ShowMsgAlertDialog(msg);
-			return;
+			return msg;
 		}
     	
     	//判斷2月，是否為閏年
@@ -115,94 +127,105 @@ public class MainActivity extends Activity {
 //    			msg = "你所輸入的出生[年月]不正確!!!";
     			msg = "你所輸入的日期不正確!!!";
     			ShowMsgAlertDialog(msg);
-    		}
-    	}
-    	else
-    	{
-    		if(dd > MMdate[MM] || dd < 1)
-    		{
+    			return msg;
     			
     		}else{
-    			msg = "此年為閏年!!!";
-    			ShowMsgAlertDialog(msg); 
+    			int result = test.timeShow2(YYYY, MM, dd);
+    			msg = "你現在輸入的實際年齡為 " + result + "歲\n";
+				ShowMsgAlertDialog(msg + "此年是閏年!!!");
+    			return msg;
+				
+    		}
+    	}else{
+    		if(dd > MMdate[MM] || dd < 1){
+    			msg = "你所輸入的日期不正確!!!";
+    			ShowMsgAlertDialog(msg);
+    			return msg;
+    			
+    		}else{
+    			int result = test.timeShow2(YYYY, MM, dd);
+    			msg = "你現在輸入的實際年齡為 " + result + "歲\n";
+    			ShowMsgAlertDialog(msg);
+    			return msg;
+    			
     		}
     	}
     	
+//    	
+//    	if(test.isLeapYear(YYYY) && (dd > 29 || dd < 1))
+//    	{
+//    		msg = "你所輸入的出生[日期]不正確!!!";
+//			ShowMsgAlertDialog(msg);
+//			return;
+//    	}
+//    	else if(dd > MMdate[MM] || dd < 1)
+//    	{
+//    		msg = "你所輸入的出生[日期]不正確!!!";
+//			ShowMsgAlertDialog(msg);
+//			return;
+//    	}
     	
-    	
-    	if(test.isLeapYear(YYYY) && (dd > 29 || dd < 1))
-    	{
-    		msg = "你所輸入的出生[日期]不正確!!!";
-			ShowMsgAlertDialog(msg);
-			return;
-    	}
-    	else if(dd > MMdate[MM] || dd < 1)
-    	{
-    		msg = "你所輸入的出生[日期]不正確!!!";
-			ShowMsgAlertDialog(msg);
-			return;
-    	}
-    	
-    	if(dd > MMdate[MM] || dd < 1){
-			msg = "你所輸入的出生月日不正確!!!";
-			ShowMsgAlertDialog(msg);
+//    	if(dd > MMdate[MM] || dd < 1){
+//			msg = "你所輸入的出生月日不正確!!!";
+//			ShowMsgAlertDialog(msg);
+//			
+//		}else{
+//			if(MM == 2 && dd > 29)
+//			{
+//				ageCalculate();
+//				return;
+//			}
 			
-		}else{
-			if(MM == 2 && dd > 29)
-			{
-				ageCalculate();
-				return;
-			}
-			
-			if((MM==1 || MM==3 ) && dd >31)
-			{
-				//...
-				return;
-			}
-			// if 其它月份...
-			
-			if(YYYY < 1912 || MM == 2 && dd > 29){
-				msg = "你所輸入的出生月日不正確!!!";
-				ShowMsgAlertDialog(msg);
-				return;
-			}
-			
-			//1 3 5 7 8 10 12 dd到31.
-			if(YYYY < 1912 || 
-					(MM == 1 && dd > 31) || (MM == 3 && dd > 31) || (MM == 5 && dd > 31) ||
-					(MM == 7 && dd > 31) || (MM == 8 && dd > 31) || (MM == 10 && dd > 31) || 
-					(MM == 12 && dd > 31)){
-						msg = "你所輸入的出生月日不正確!!!";
-						ShowMsgAlertDialog(msg);
-						return;
-			}
-				
-			if(YYYY < 1912 || 
-					(MM == 4 && dd > 30) || (MM == 6 && dd > 30) || (MM == 9 && dd > 30) ||
-					(MM == 11 && dd > 30)){
-						msg = "你所輸入的出生月日不正確!!!";
-						ShowMsgAlertDialog(msg);
-			}else{
-				try {
-		        	long Show = test.timeShow2(YYYY, MM, dd);
-		        	String age;
-		        	age = String.valueOf(Show);
-		        	msg = "你現在輸入的實際年齡為 " + age + "歲";
-				
-					
-//					Toast.makeText(MainActivity.this, Show + "", Toast.LENGTH_LONG).show();
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			
-				ShowMsgAlertDialog(msg);
-			}
-			msg = "你現在輸入的實際年齡為 " + result + "歲";
-			ShowMsgAlertDialog(msg);
-		}
+//			if((MM==1 || MM==3 ) && dd >31)
+//			{
+//				//...
+//				return;
+//			}
+//			// if 其它月份...
+//			
+//			if(YYYY < 1912 || MM == 2 && dd > 29){
+//				msg = "你所輸入的出生月日不正確!!!";
+//				ShowMsgAlertDialog(msg);
+//				return;
+//			}
+//			
+//			//1 3 5 7 8 10 12 dd到31.
+//			if(YYYY < 1912 || 
+//					(MM == 1 && dd > 31) || (MM == 3 && dd > 31) || (MM == 5 && dd > 31) ||
+//					(MM == 7 && dd > 31) || (MM == 8 && dd > 31) || (MM == 10 && dd > 31) || 
+//					(MM == 12 && dd > 31)){
+//						msg = "你所輸入的出生月日不正確!!!";
+//						ShowMsgAlertDialog(msg);
+//						return;
+//			}
+//				
+//			if(YYYY < 1912 || 
+//					(MM == 4 && dd > 30) || (MM == 6 && dd > 30) || (MM == 9 && dd > 30) ||
+//					(MM == 11 && dd > 30)){
+//						msg = "你所輸入的出生月日不正確!!!";
+//						ShowMsgAlertDialog(msg);
+//			}else{
+//				try {
+//		        	long Show = test.timeShow2(YYYY, MM, dd);
+//		        	String age;
+//		        	age = String.valueOf(Show);
+//		        	msg = "你現在輸入的實際年齡為 " + age + "歲";
+//				
+//					
+////					Toast.makeText(MainActivity.this, Show + "", Toast.LENGTH_LONG).show();
+//				} catch (ParseException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			
+//				ShowMsgAlertDialog(msg);
+//			}
+//			msg = "你現在輸入的實際年齡為 " + result + "歲";
+//			ShowMsgAlertDialog(msg);
+//		}
     }
 
+    //顯示訊息對話框
     private void ShowMsgAlertDialog(String msg){
     	Builder MyAlertDialog = new AlertDialog.Builder(this);
 //    	MyAlertDialog.setTitle("你現在輸入的實際年齡為 " + msg + "歲");
