@@ -6,7 +6,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -143,21 +142,18 @@ public class MainActivity extends Activity {
 	    	//使用DecimalFormat.format
 //	    	tvDollars.setText(mDecimalFormat.format(Dollars));
 	    	
+	    	//mDecimalFormat.format(Object object)，這裡吃的是object type.
 	    	tvJPY.setText(mDecimalFormat.format(JPY));
 	    	tvHK.setText(mDecimalFormat.format(HK));
 	    	tvSterling.setText(mDecimalFormat.format(Sterling));
 	    	tvEuro.setText(mDecimalFormat.format(Euro));
 	    	
+	    	//轉換 double成 String，給TextView呈現
 //	    	tvDollars.setText(String.valueOf(Dollars));
 //	    	tvJPY.setText(String.valueOf(JPY));
 //	    	tvHK.setText(String.valueOf(HK));
 //	    	tvSterling.setText(String.valueOf(Sterling));
 //	    	tvEuro.setText(String.valueOf(Euro));
-	    	
-//	    	mDecimalFormat.format(String.valueOf(Dollars));
-//	    	mDecimalFormat.format(String.valueOf(JPY));
-//	    	mDecimalFormat.format(String.valueOf(HK));
-//	    	mDecimalFormat.format(String.valueOf(Sterling));
-//	    	mDecimalFormat.format(String.valueOf(Euro));
+	    
     }
 }
