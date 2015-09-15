@@ -1,0 +1,99 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TableRow>
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="@string/dollars" />
+            <TextView
+                android:id="@+id/tvDollars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />"
+        </TableRow>
+
+        <TableRow>
+             <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="@string/JPY" />
+            <TextView
+                android:id="@+id/tvJPY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow>
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="@string/HK" />
+            <TextView
+                android:id="@+id/tvHK"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow>
+			<TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="@string/sterling" />
+            <TextView
+                android:id="@+id/tvSterling"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
+        </TableRow>
+        
+		<TableRow>
+			<TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="@string/euro" />
+            <TextView
+                android:id="@+id/tvEuro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
+        </TableRow>
+    </TableLayout>
+
+        <EditText
+            android:id="@+id/etEnterNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="9dp"
+            android:inputType="number"
+            android:hint="@string/remind" />
+
+        <Button
+            android:id="@+id/btnOk"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/etEnterNumber"
+            android:layout_marginBottom="9dp"
+            android:layout_marginLeft="46dp"
+            android:layout_toRightOf="@+id/etEnterNumber"
+            android:text="@string/ok" />
+
+</RelativeLayout>
